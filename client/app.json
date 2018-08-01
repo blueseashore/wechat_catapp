@@ -8,13 +8,13 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#2C3031",
-        "navigationBarTitleText": "码云博客",
+        "navigationBarTitleText": "做我的喵星人",
         "navigationBarTextStyle": "write"
     },
     "plugins": {
         "wxparserPlugin": {
             "version": "0.1.0",
-            "provider": "wx9d4d4ffa781ff3ac"
+            "provider": "wx3908ccac19e2c9ea"
         }
     },
     "tabBar": {
@@ -23,7 +23,7 @@
         "list": [
             {
                 "pagePath": "pages/index/index/index",
-                "text": "博客",
+                "text": "喵星球",
                 "iconPath": "images/icons/gitee-logo-gray.png",
                 "selectedIconPath": "images/icons/gitee-logo-red.png"
             },

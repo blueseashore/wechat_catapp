@@ -6,6 +6,7 @@ register_shutdown_function(function () {
 });
 date_default_timezone_set('PRC');  //设置中国时区
 if (version_compare(PHP_VERSION, '5.4.0', '<')) die('require PHP > 5.4.0 !');  // 检测PHP环境
+echo __DIR__;die;
 require_once '../vendor/autoload.php';  //加载Composer组件
 define('APP_DEBUG', true);              //开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('BUILD_DIR_SECURE', false);      //关闭安全文件
