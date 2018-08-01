@@ -1,7 +1,7 @@
 /**
  * 网络请求接口模块
  * @module urls
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 const HOST = 'https://uckendo.com/';
 const urls = {
