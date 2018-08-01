@@ -3,7 +3,7 @@
  * @module urls
  * @author 诺墨 <normal@normalcoder.com>
  */
-const HOST = 'https://gitee.normalcoder.com';
+const HOST = 'https://uckendo.com/';
 const urls = {
     host: HOST,
     index: HOST + '/Index/index',

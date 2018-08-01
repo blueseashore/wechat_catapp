@@ -2,7 +2,6 @@
     "pages": [
         "pages/index/index/index",
         "pages/index/detail/index",
-        "pages/index/canvas/index",
         "pages/mine/index/index",
         "pages/mine/webview/index"
     ],
