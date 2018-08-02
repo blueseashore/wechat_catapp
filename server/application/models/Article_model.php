@@ -5,8 +5,15 @@
  */
 class Article_model extends CI_Model
 {
+
     private $_table = 'wp_posts';
     private $db;
+    private $_category = [
+        '24' => '喵星新品',
+        '25' => '喵星卡牌',
+        '26' => '喵星学堂',
+        '27' => '喵星玩具',
+    ];
 
     public function __construct()
     {
@@ -57,7 +64,7 @@ class Article_model extends CI_Model
 //        print_r($data);die;
         if (!empty($data)) {
             foreach ($data as &$item) {
-                $item['date'] = date('Y年m月d日',strtotime($item['date']));
+                $item['date'] = date('Y年m月d日', strtotime($item['date']));
                 $item['thumbnail'] = 'https://blog.gitee.com/wp-content/uploads/2018/07/小程序-700x500.png';
 //                $item['category'] = $this->category_model->getName($item['']);
             }
@@ -68,9 +75,14 @@ class Article_model extends CI_Model
 
     public function get($id = 0)
     {
-
-        $this->db->select('post_title as title,brand_code,brand_name,brand_website,brand_logo,brand_status,create_time');
-
-        $data = $this->db->get_where($this->_table, ['id' => $id])->row_array();
+        $column = [
+            'post_title as title',
+            'post_date date',
+            'post_content content',
+        ];
+        $this->db->select(join(',', $column));
+        $this->db->from($this->_table);
+        $this->db->where('id', intval($id));
+        return $this->db->get()->row_array();
     }
 }
