@@ -7,7 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Index extends CI_Controller
 {
-    public function home(){
+    public function home()
+    {
 
     }
 
@@ -20,7 +21,6 @@ class Index extends CI_Controller
         $list[] = ['id' => 'updates', 'title' => '产品动态', 'url' => '/Blog/category?category=updates', 'data' => []];
         $response['list'] = $list;
         $response['selectedId'] = 0;
-        send_json($response);
+        send_json(TRUE, $response);
     }
-
 }
