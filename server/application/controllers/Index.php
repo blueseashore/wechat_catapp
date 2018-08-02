@@ -1,5 +1,6 @@
 <?php
 /**
+ * 首页控制器
  * User: kendo    Date: 2018/8/2
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -12,14 +13,18 @@ class Index extends CI_Controller
 
     }
 
+    /**
+     * @name 获取分类
+     */
     public function category()
     {
         $response['scroll'] = false;
-        $list[] = ['id' => 'weekly', 'title' => '喵星新品', 'url' => '/article/list?category=weekly', 'data' => []];
-        $list[] = ['id' => 'tips', 'title' => '喵星卡牌', 'url' => '/article/list?category=tips', 'data' => []];
-        $list[] = ['id' => 'cases', 'title' => '喵星学堂', 'url' => '/article/list?category=cases', 'data' => []];
-        $list[] = ['id' => 'updates', 'title' => '喵星玩具', 'url' => '/article/list?category=updates', 'data' => []];
-        $response['list'] = $list;
+        $response['list'] = [
+            ['id' => 'cat-new', 'title' => '喵星新品', 'url' => '/article/list?cat=24', 'data' => []],
+            ['id' => 'cat-breed', 'title' => '喵星卡牌', 'url' => '/article/list?cat=25', 'data' => []],
+            ['id' => 'cat-school', 'title' => '喵星学堂', 'url' => '/article/list?cat=26', 'data' => []],
+            ['id' => 'cat-tool', 'title' => '喵星玩具', 'url' => '/article/list?cat=27', 'data' => []]
+        ];
         $response['selectedId'] = 0;
         send_json(TRUE, $response);
     }
