@@ -35,7 +35,6 @@ class Article extends CI_Controller
 
     public function detail()
     {
-        $id = $this->input->get()['id'];
         $data = [
             'title' => '微信小程序开源项目精选 | 码云周刊第 79 期',
             'category' => '逗你玩',
