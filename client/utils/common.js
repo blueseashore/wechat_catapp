@@ -4,7 +4,7 @@
  * @module getMineList -
  * @module bingOSCUser -
  * @module getSourcePlatformName - 
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 
 import { urls } from './urls.js';

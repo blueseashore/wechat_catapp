@@ -4,7 +4,7 @@
  * @module getDate - 获取当前日期
  * @module getDay - 获取当前时间为星期几
  * @module getDateVisible - 把时间转化为「多久前」
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 const newDate = new Date()
 const getDate = () => newDate.getFullYear() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getDate()

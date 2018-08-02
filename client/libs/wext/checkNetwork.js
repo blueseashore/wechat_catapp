@@ -1,7 +1,7 @@
 /**
  * 网络环境检查模块
  * @module checkNetwork
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 /**
  * 网络请求方法

@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: think-monolog
- * Author: ZhangShX <normal@normalcoder.com>:
+ * Author: ZhangShX <455019825@qq.com>:
  * Time: 2017/11/8 下午11:12
  * Discript:
  */

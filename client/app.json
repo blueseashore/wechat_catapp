@@ -14,7 +14,7 @@
     "plugins": {
         "wxparserPlugin": {
             "version": "0.1.0",
-            "provider": "wx3908ccac19e2c9ea"
+            "provider": "wx9d4d4ffa781ff3ac"
         }
     },
     "tabBar": {

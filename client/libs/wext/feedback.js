@@ -2,7 +2,7 @@
  * 交互反馈模块
  * @module showModal - Modal浮层交互
  * @module showToast - Toast交互
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 const showModal = (obj) => {
     if (obj.title == undefined) { obj.title = '温馨提示' }

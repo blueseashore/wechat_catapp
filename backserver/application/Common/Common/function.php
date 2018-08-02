@@ -1,7 +1,7 @@
 <?php
 /**
  * Project:
- * Author: ZhangShX <normal@normalcoder.com>:
+ * Author: ZhangShX <455019825@qq.com>:
  * Time: 2017/1/16 下午8:42
  * Discript:全局函数库
  */

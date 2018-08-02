@@ -1,7 +1,7 @@
 /**
  * 网络请求模块
  * @module wxRequest
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 import { checkNetwork } from './checkNetwork.js';
 import { userLogin } from './userLogin.js';

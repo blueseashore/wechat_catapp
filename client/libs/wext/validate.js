@@ -1,7 +1,7 @@
 /**
  * 数据校验模块
  * @module validateURL - 网址格式校验
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 /**
  * 网址格式校验方法

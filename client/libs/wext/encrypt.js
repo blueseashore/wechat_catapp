@@ -1,7 +1,7 @@
 /**
  * 数据加解密模块
  * @module sha1 - sha1加密
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 const encodeUTF8 = (s) => {
     var i, r = [], c, x;

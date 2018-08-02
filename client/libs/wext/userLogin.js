@@ -1,7 +1,7 @@
 /**
  * 小程序登陆/会话cookie模块
  * @module userLogin
- * @author 诺墨 <normal@normalcoder.com>
+ * @author uckendo <455019825@qq.com>
  */
 /**
  * 小程序登陆/会话cookie模块请求方法
