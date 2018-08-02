@@ -1,13 +1,11 @@
 <!--pages/setting/index.wxml-->
 <import src="/style/zan-ui/loadmore/index.wxml" />
 <view class="container">
-    <image class="logo" src="/images/icons/gitee-logo-red.png"></image>
+    <image class="logo" src="/images/icons/catearth-logo.png"></image>
 
-    <view class='logo-title'>码云博客</view>
-    <view class='logo-description'>第三方小程序 Update at 2018.06.20</view>
+    <view class='logo-title'>做我的喵星人</view>
+    <view class='logo-description'>第三方小程序</view>
     <template is="zan-loadmore" data="{{ nomore: true }}" />
-
-
     <block wx:for="{{ list }}" wx:for-item="group" wx:key="title">
         <view class="zan-panel-title">{{ group.title }}</view>
         <view class="zan-panel">
@@ -25,11 +23,6 @@
                     </navigator>
                 </view>
             </view>
-
-
-
-
         </view>
     </block>
-
 </view>
