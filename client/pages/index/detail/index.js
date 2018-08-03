@@ -117,7 +117,7 @@ Page({
         wxRequest({
             url: urls.blogDetail,
             data: {
-                path: this.data.path
+                id: this.data.path
             },
             success: (res) => {
                 //wx.showLoading({ title: '即将完成', mask: true });

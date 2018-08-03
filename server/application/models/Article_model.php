@@ -77,6 +77,20 @@ class Article_model extends CI_Model
         $this->db->select(join(',', $column));
         $this->db->from($this->_table);
         $this->db->where('id', intval($id));
-        return $this->db->get()->row_array();
+        $data = $this->db->get()->row_array();
+        $data['category'] = '';
+        if (!empty($data['title'])) {
+            $this->db->reset_query();
+            $this->db->select('term_taxonomy_id');
+            $this->db->from($this->_table . ' p');
+            $this->db->join('wp_term_relationships r', 'p.id = r.object_id');
+            $this->db->where('object_id', $id);
+            $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
+            $category = $this->db->get()->row_array();
+            if (!empty($category) && isset($this->_category[$category['term_taxonomy_id']])) {
+                $data['category'] = $this->_category[$category['term_taxonomy_id']];
+            }
+        }
+        return $data;
     }
 }
