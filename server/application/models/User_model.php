@@ -32,7 +32,6 @@ class User_model extends CI_Model
             'unionid' => $param['unionid'] ?? '',
             'create_time' => date('Y-m-d H:i:s', $time), //创建时间
             'last_login_time' => date('Y-m-d H:i:s', $time), //最后一次登陆时间
-            'token' => md5($param['openid'] . $time), //登陆校验盐
         ];
         return $this->db->insert($this->_table, $data);
     }
