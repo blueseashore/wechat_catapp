@@ -27,7 +27,7 @@ class User extends CI_Controller
         $wxUserInfo = $app->auth->session($code);
         if (empty($wxUserInfo['errcode']) && !empty($wxUserInfo['openid'])) {
             //正确解码
-            if ($_SESSION['session_key'] !== $wxUserInfo['session_key']) {
+            if (!isset($_SESSION['session_key']) || $_SESSION['session_key'] !== $wxUserInfo['session_key']) {
                 $_SESSION['session_key'] = $wxUserInfo['session_key'];
             }
             $res = $this->user_model->checkUserByOpenID($wxUserInfo['openid']); //检查是否存在用户
