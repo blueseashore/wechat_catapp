@@ -61,6 +61,8 @@ class User extends CI_Controller
 
     public function mineList()
     {
-
+        send_json(TRUE, []);
     }
+
+
 }
