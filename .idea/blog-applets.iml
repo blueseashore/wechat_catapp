@@ -31,6 +31,7 @@
       <library name="PHP" type="php">
         <CLASSES>
           <root url="file://$MODULE_DIR$/../../meiqingmuxiu/yafide" />
+          <root url="file://$MODULE_DIR$/../../personal/cicms/application/helpers/phpstorm_ci_helper" />
           <root url="file://$MODULE_DIR$/server/vendor/composer" />
           <root url="file://$MODULE_DIR$/server/vendor/easywechat-composer/easywechat-composer" />
           <root url="file://$MODULE_DIR$/server/vendor/guzzlehttp/guzzle" />
@@ -56,6 +57,7 @@
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/../../meiqingmuxiu/yafide" />
+          <root url="file://$MODULE_DIR$/../../personal/cicms/application/helpers/phpstorm_ci_helper" />
           <root url="file://$MODULE_DIR$/server/vendor/composer" />
           <root url="file://$MODULE_DIR$/server/vendor/easywechat-composer/easywechat-composer" />
           <root url="file://$MODULE_DIR$/server/vendor/guzzlehttp/guzzle" />

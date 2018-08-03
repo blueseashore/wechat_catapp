@@ -3,7 +3,7 @@
  * @module urls
  * @author uckendo <455019825@qq.com>
  */
-const HOST = 'https://miniapp.uckendo.com/';
+const HOST = 'https://miniapp.uckendo.com';
 const urls = {
     host: HOST,
     index: HOST + '/Index/index',

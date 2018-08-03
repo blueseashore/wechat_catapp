@@ -9,7 +9,7 @@ use EasyWeChat\Factory;
 class User extends CI_Controller
 {
 
-    public function index()
+    public function __construct()
     {
         parent::__construct();
         $this->load->model('user_model');
@@ -19,7 +19,7 @@ class User extends CI_Controller
     {
         $config = [
             'app_id' => 'wx3908ccac19e2c9ea',
-            'secret' => '',
+            'secret' => 'dd066a75c856f072694223f0f4d6b22d',
             'response_type' => 'array',
         ];
         $app = Factory::miniProgram($config);

@@ -1,2 +1,3 @@
 /.DS_Store
-/server/application/Common/Conf/db.php
+/server/application/config/database.php
+/vendor
