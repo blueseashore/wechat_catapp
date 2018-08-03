@@ -15,7 +15,7 @@ class Article extends CI_Controller
     public function list()
     {
         $param = $this->input->get();
-        send_json(TRUE, $this->article_model->list($param));
+        send_json(TRUE, ['list'=>$this->article_model->list($param)]);
     }
 
     public function detail()
