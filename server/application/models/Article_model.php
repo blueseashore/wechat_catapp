@@ -37,13 +37,6 @@ class Article_model extends CI_Model
                 'category' => '码云周刊',
                 'date' => '2018年7月23日',
             ],
-            [
-                'thumbnail' => 'https://blog.gitee.com/wp-content/uploads/2018/06/默认标题_自定义px_2018.07.11-700x500.png',
-                'title' => '世界杯阵型之争的背后，国产开源项目百花争艳 | 码云周刊第 77 期',
-                'href' => 'https://blog.gitee.com/2018/06/24/weekly77/',
-                'category' => '码云周刊',
-                'date' => '2018年6月23日',
-            ],
         ];
         $this->db->select(join(',', $column));
         if (!empty($param['cat'])) {
@@ -61,12 +54,13 @@ class Article_model extends CI_Model
         $this->db->group_by('object_id');
 
         $data = $this->db->get()->result_array();
-//        print_r($data);die;
         if (!empty($data)) {
             foreach ($data as &$item) {
+                $item['href'] = $item['id'];
                 $item['date'] = date('Y年m月d日', strtotime($item['date']));
-                $item['thumbnail'] = 'https://blog.gitee.com/wp-content/uploads/2018/07/小程序-700x500.png';
-//                $item['category'] = $this->category_model->getName($item['']);
+                if (empty($item['thumbnail'])) {
+                    $item['thumbnail'] = 'https://blog.gitee.com/wp-content/uploads/2018/07/小程序-700x500.png';
+                }
             }
         }
         return $data;

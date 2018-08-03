@@ -188,7 +188,7 @@ Page(extend({}, Tab, {
                 })
                 let newCurrentPage = this.data.categoryTab.list[currentTabID].currentPage + 1
                 wxRequest({
-                    url: urls.host + url + "/page/" + newCurrentPage,
+                    url: urls.host + url + "&page=" + newCurrentPage,
                     success: (res) => {
                         console.warn(res);
                         let data = currentTabDataID + ".data";

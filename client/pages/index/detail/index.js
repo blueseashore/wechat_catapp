@@ -115,7 +115,7 @@ Page({
     refresh: function(){
         var that = this;
         wxRequest({
-            url: urls.blogDetail,
+            url: urls.blogDetail + this.data.id,
             data: {
                 path: this.data.path
             },
