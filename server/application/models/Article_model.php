@@ -87,6 +87,7 @@ class Article_model extends CI_Model
             $this->db->where('object_id', $id);
             $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
             $category = $this->db->get()->row_array();
+            file_put_contents('/tmp/wxlog',json_encode($category));
             if (!empty($category) && isset($this->_category[$category['term_taxonomy_id']])) {
                 $data['category'] = $this->_category[$category['term_taxonomy_id']];
             }

@@ -19,7 +19,7 @@ class User extends CI_Controller
     {
         $config = [
             'app_id' => 'wx3908ccac19e2c9ea',
-            'secret' => 'dd066a75c856f072694223f0f4d6b22d',
+            'secret' => '',
             'response_type' => 'array',
         ];
         $app = Factory::miniProgram($config);
