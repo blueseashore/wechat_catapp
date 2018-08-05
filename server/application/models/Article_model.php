@@ -44,7 +44,7 @@ class Article_model extends CI_Model
         }
         $this->db->from($this->_table . ' p');
         $this->db->where('ping_status', 'open');
-        $this->db->where('post_status', 'publish');
+        $this->db->where('post_status', 'private');
         $this->db->where('post_type', 'post');
         $this->db->join('wp_term_relationships r', 'r.object_id = p.ID');
         $page = !empty($param['page']) ? intval($param['page']) : 1;
