@@ -18,7 +18,7 @@ class User extends CI_Controller
     public function login()
     {
         $config = [
-            'app_id' => 'wx3908ccac19e2c9ea',
+            'app_id' => 'wx9aa1f8936c40ff46',
             'secret' => '',
             'response_type' => 'array',
         ];
