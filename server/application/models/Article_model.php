@@ -9,11 +9,11 @@ class Article_model extends CI_Model
     private $_table = 'wp_posts';
     private $db;
     private $_category = [
-        '0' => '喵星首页',
-        '24' => '喵星新品',
-        '25' => '喵星卡牌',
-        '26' => '喵星学堂',
-        '27' => '喵星玩具',
+        '0' => '首页',
+        '24' => '新品',
+        '25' => '卡牌',
+        '26' => '学堂',
+        '27' => '玩具',
     ];
 
     public function __construct()
