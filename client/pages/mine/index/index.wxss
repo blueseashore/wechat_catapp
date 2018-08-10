@@ -22,7 +22,10 @@
     padding: 20px 15px 0 15px;
     text-align: center
 }
-
+.contact{
+    background-color: pink;
+    text-align: center
+}
 .zan-loadmore--nomore .zan-loadmore__tips {
     background: #eee;
 }

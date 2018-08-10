@@ -9,6 +9,7 @@ class Article_model extends CI_Model
     private $_table = 'wp_posts';
     private $db;
     private $_category = [
+        '0' => '喵星首页',
         '24' => '喵星新品',
         '25' => '喵星卡牌',
         '26' => '喵星学堂',
@@ -41,6 +42,8 @@ class Article_model extends CI_Model
         $this->db->select(join(',', $column));
         if (!empty($param['cat'])) {
             $this->db->where('term_taxonomy_id', intval($param['cat']));
+        } else {
+            $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
         }
         $this->db->from($this->_table . ' p');
         $this->db->where('ping_status', 'open');
@@ -87,7 +90,7 @@ class Article_model extends CI_Model
             $this->db->where('object_id', $id);
             $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
             $category = $this->db->get()->row_array();
-            file_put_contents('/tmp/wxlog',json_encode($category));
+            file_put_contents('/tmp/wxlog', json_encode($category));
             if (!empty($category) && isset($this->_category[$category['term_taxonomy_id']])) {
                 $data['category'] = $this->_category[$category['term_taxonomy_id']];
             }

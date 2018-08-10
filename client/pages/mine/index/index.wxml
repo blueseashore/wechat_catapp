@@ -6,6 +6,11 @@
     <view class='logo-title'>做我的喵星人</view>
     <view class='logo-description'>第三方小程序</view>
     <template is="zan-loadmore" data="{{ nomore: true }}" />
+    <view class='logo-description'>联系客服
+      <contact-button class='contact' type="default-light" size="20" session-from="weapp">
+      </contact-button>
+    </view>
+    
     <block wx:for="{{ list }}" wx:for-item="group" wx:key="title">
         <view class="zan-panel-title">{{ group.title }}</view>
         <view class="zan-panel">
