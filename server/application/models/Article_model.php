@@ -92,6 +92,7 @@ class Article_model extends CI_Model
             $category = $this->db->get()->row_array();
             file_put_contents('/tmp/wxlog', json_encode($category));
             if (!empty($category) && isset($this->_category[$category['term_taxonomy_id']])) {
+                $data['cat'] = $category['term_taxonomy_id'];
                 $data['category'] = $this->_category[$category['term_taxonomy_id']];
             }
         }
