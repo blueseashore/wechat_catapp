@@ -16,7 +16,7 @@ import {
 
 import { Tab, extend } from '../../../style/zan-ui/index.js';
 
-Page(extend({}, Tab, {
+Page({
   data: {
     articles: [],
     selectedId: '',
@@ -24,11 +24,18 @@ Page(extend({}, Tab, {
     scroll: false,
     height: 45,
     scrolling: false,  
+    currentPage:1,
+    searchValue:"",
   },
   onLoad: function (options) {
     var that = this;
-    console.log(options);
-    console.log(options.searchValue);
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
     wx.request({
       url: "https://uckendo.com/Article/search?searchValue=" + options.searchValue,
       method: 'GET',
@@ -39,69 +46,11 @@ Page(extend({}, Tab, {
       },
       success: function (res) {
         that.setData({
-          articles: res.data
+          articles: res.data,
+          searchValue: options.searchValue
         })
       }
     })
-  },
-
-  refresh: function (obj) {
-    var that = this;
-    if (this.data.scrolling == true) {
-      console.info("请求刷新中，不执行其他操作")
-    } else {
-      let currentTabID = this.data.categoryTab.selectedTabID;
-      let url = this.data.categoryTab.list[currentTabID].url;
-      let currentTabDataID = "categoryTab.list[" + currentTabID + "].data";
-      for (var i = 0; i < this.data.categoryTab.list.length; i++) {
-        let url = this.data.categoryTab.list[i].url;
-        let currentTabDataID = "categoryTab.list[" + i + "]";
-        if (this.data.categoryTab.list[i].id == this.data.categoryTab.selectedId) { //刷新当前标签页：
-          console.info('刷新当前标签页：' + currentTabDataID + "；请求地址为：" + url);
-          if (obj.singleTabRefresh) {
-            wx.showLoading({ title: '正在刷新', })
-          } else {
-            wx.showLoading({ title: '加载中', })
-          }
-
-          this.firstRequest(url, currentTabDataID);
-        } else { //刷新非当前标签页
-          if (!obj.singleTabRefresh) {
-            setTimeout(function () {
-              console.info('刷新标签页：' + currentTabDataID + "；请求地址为：" + url);
-              that.firstRequest(url, currentTabDataID);
-            }, 2000);
-          }
-        }
-      }
-      // `categoryTab.selectedId`
-      // console.warn(currentTabDataID);
-      // this.firstRequest(url, currentTabDataID);
-    }
-  },
-
-  getResultList: function (url, currentTabDataID) {
-    let that = this;
-    wxRequest({
-      url: urls.host + url,
-      success: (res) => {
-        console.warn(res);
-        let data = currentTabDataID + ".data";
-        let page = currentTabDataID + ".page";
-        let currentPage = currentTabDataID + ".currentPage";
-        this.setData({
-          [data]: res.list,
-          [page]: res.pagecount,
-          [currentPage]: 1,
-        })
-        // console.warn(res);
-      },
-      fail: function (res) { console.log(res.code + "====>" + res.error); },
-      error: function (res) { console.log(res); },
-      complete: function (res) {
-        that.setData({ scrolling: false });
-      },
-    });
   },
 
   /**
@@ -115,49 +64,25 @@ Page(extend({}, Tab, {
    */
   getNextPage: function () {
     var that = this;
-    if (this.data.scrolling == true) {
-      console.info("请求刷新中，不执行其他操作")
-    } else {
-      that.setData({ scrolling: true });
-      //wx.showLoading({ title: '下一页数据加载中', });
-      let currentTabID = this.data.categoryTab.selectedTabID;
-      let url = this.data.categoryTab.list[currentTabID].url;
-      let currentTabDataID = "categoryTab.list[" + currentTabID + "]";
-      if (this.data.categoryTab.list[currentTabID].currentPage == this.data.categoryTab.list[currentTabID].page) {
-        showToast({
-          'title': "没有下一页"
-        });
-        this.setData({ scrolling: false });
-      } else {
-        wx.showLoading({
-          title: '正在加载',
-        })
-        let newCurrentPage = this.data.categoryTab.list[currentTabID].currentPage + 1
-        wxRequest({
-          url: urls.host + url + "&page=" + newCurrentPage,
-          success: (res) => {
-            console.warn(res);
-            let data = currentTabDataID + ".data";
-            let page = currentTabDataID + ".page";
-            let currentPage = currentTabDataID + ".currentPage";
-            var newData = this.data.categoryTab.list[currentTabID].data.concat(res.list);
-            that.setData({
-              [data]: newData,
-              [page]: res.pagecount,
-              [currentPage]: newCurrentPage,
-            })
-            setTimeout(function () { wx.hideLoading(); }, 1000);
-          },
-          fail: function (res) {
-            console.log(res);
-            setTimeout(function () { wx.hideLoading(); }, 1000);
-          },
-          complete: function (res) {
-            that.setData({ scrolling: false });
-          },
-        });
-      }
-    }
+    that.setData({ scrolling: true });
+    let url = "/Article/search?searchValue=" + this.data.searchValue;
+    var newCurrentPage = this.data.currentPage + 1;
+    wxRequest({
+      url: urls.host + url + "&page=" + newCurrentPage,
+      success: (res) => {
+        var newData = res.data;
+        that.setData({articles:newData });
+        that.setData({currentPage:newCurrentPage });
+        setTimeout(function () { wx.hideLoading(); }, 1000);
+      },
+      fail: function (res) {
+        console.log(res);
+        setTimeout(function () { wx.hideLoading(); }, 1000);
+      },
+      complete: function (res) {
+        that.setData({ scrolling: false });
+      },
+    });
   },
 
   /**
@@ -171,4 +96,4 @@ Page(extend({}, Tab, {
     this.refresh({ singleTabRefresh: true });
     wx.stopPullDownRefresh();
   },
-}));
+});

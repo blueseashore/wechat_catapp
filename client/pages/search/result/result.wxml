@@ -1,23 +1,30 @@
-<block wx:for="{{ articles.data.list }}" wx:for-item="singleBlog" wx:key="title">
-    <navigator url="/pages/index/detail/index?path={{ singleBlog.href }}&cover={{ singleBlog.thumbnail }}" hover-class="navigator-hover">
-        <view class="zan-box">
-            <view class="zan-row">
-                <image style="width:100%" src='{{ singleBlog.thumbnail }}' lazy-load='true' mode='widthFix'></image>
-            </view>
-            <view class="zan-row">
-                <view class='blog-info'>
-                    <!-- zan-panel-box-head -->
-                    <view class='title'>
-                        {{ singleBlog.title }}
-                    </view>
-                    <view class='category'>
-                        {{ singleBlog.category }}
-                    </view>
-                    <view class='public_time'>
-                        {{ singleBlog.date }}
+<import src="/style/zan-ui/tab/index.wxml" />
+<import src="/style/zan-ui/loadmore/index.wxml" />
+
+<scroll-view scroll-y="{{true}}" style="height: 800px" bindscrolltolower="getNextPage">          
+    <block wx:for="{{ articles.data.list }}" wx:for-item="singleBlog" wx:key="title">
+        <navigator url="/pages/index/detail/index?path={{ singleBlog.href }}&cover={{ singleBlog.thumbnail }}" hover-class="navigator-hover">
+            <view class="zan-box">
+                <view class="zan-row">
+                    <image style="width:100%" src='{{ singleBlog.thumbnail }}' lazy-load='true' mode='widthFix'></image>
+                </view>
+                <view class="zan-row">
+                    <view class='blog-info'>
+                        <!-- zan-panel-box-head -->
+                        <view class='title'>
+                            {{ singleBlog.title }}
+                        </view>
+                        <view class='category'>
+                            {{ singleBlog.category }}
+                        </view>
+                        <view class='public_time'>
+                            {{ singleBlog.date }}
+                        </view>
                     </view>
                 </view>
             </view>
-        </view>
-    </navigator>
-</block>
+        </navigator>
+    </block>
+</scroll-view>
+
+

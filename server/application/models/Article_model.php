@@ -36,18 +36,22 @@ class Article_model extends CI_Model
         } else {
             $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
         }
-        if (!empty($param['searchValue'])) {
-            $this->db->like('post_title', trim($param['searchValue']));
-            $this->db->or_like('post_content', trim($param['searchValue']));
-        }
         $this->db->from($this->_table . ' p');
         $this->db->where('ping_status', 'open');
         $this->db->where('post_status', 'private');
         $this->db->where('post_type', 'post');
         $this->db->join('wp_term_relationships r', 'r.object_id = p.ID');
+
         $page = !empty($param['page']) ? intval($param['page']) : 1;
         $limit = !empty($param['limit']) ? intval($param['limit']) : 10;
-        $this->db->limit($limit, ($page - 1) * $limit);
+
+        if (!empty($param['searchValue'])) {
+            $this->db->like('post_title', trim($param['searchValue']));
+            $this->db->or_like('post_content', trim($param['searchValue']));
+        }else{
+            $this->db->limit($limit, ($page - 1) * $limit);
+        }
+
         $this->db->order_by('p.id', 'desc');
         $this->db->group_by('object_id');
 

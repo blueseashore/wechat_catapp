@@ -1,4 +1,4 @@
-/* pages/index/index/index.wxss */
+/* pages/search/result/result.wxss */
 
 .zan-card__thumb {
     max-width: 50px;
@@ -55,8 +55,6 @@ swiper{
     display: inline-block; font-size: 12px;color: #999; margin-right: 5px
 }
 .public_time{ display: inline-block; font-size: 12px;color: #999; margin-right: 5px}
-
-
 
 
 .zan-loadmore--nomore .zan-loadmore__tips {
