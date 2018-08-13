@@ -13,12 +13,9 @@
                         <view class='title'>
                             {{ title }}
                         </view>
-                        <navigator url="/pages/index/detail/index?path=" hover-class="navigator-hover">
                         <view class='category'>
                             {{ category }}
                         </view>
-                        </navigator>
-
                         <view class='public_time'>
                             {{ date }}
                         </view>

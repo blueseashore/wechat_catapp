@@ -3,7 +3,9 @@
         "pages/index/index/index",
         "pages/index/detail/index",
         "pages/mine/index/index",
-        "pages/mine/webview/index"
+        "pages/mine/webview/index",
+        "pages/search/index/index",
+        "pages/search/result/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -26,6 +28,12 @@
                 "text": "喵星球",
                 "iconPath": "images/icons/gitee-logo-gray.png",
                 "selectedIconPath": "images/icons/gitee-logo-red.png"
+            },
+            {
+              "pagePath": "pages/search/index/index",
+              "text": "搜索",
+              "iconPath": "images/icons/search.png",
+              "selectedIconPath": "images/icons/search-ing.png"
             },
             {
                 "pagePath": "pages/mine/index/index",

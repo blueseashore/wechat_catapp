@@ -30,20 +30,15 @@ class Article_model extends CI_Model
             'post_excerpt  thumbnail',
             'post_date date',
         ];
-        $data['list'] = [
-            [
-                'thumbnail' => 'https://blog.gitee.com/wp-content/uploads/2018/07/小程序-700x500.png',
-                'title' => '微信小程序开源项目精选 | 码云周刊第 79 期',
-                'href' => 'https://blog.gitee.com/2018/07/23/wechat_applet/',
-                'category' => '码云周刊',
-                'date' => '2018年7月23日',
-            ],
-        ];
         $this->db->select(join(',', $column));
         if (!empty($param['cat'])) {
             $this->db->where('term_taxonomy_id', intval($param['cat']));
         } else {
             $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
+        }
+        if (!empty($param['searchValue'])) {
+            $this->db->or_like('post_title', trim($param['searchValue']));
+            $this->db->or_like('post_content', trim($param['searchValue']));
         }
         $this->db->from($this->_table . ' p');
         $this->db->where('ping_status', 'open');
