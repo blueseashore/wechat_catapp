@@ -44,7 +44,7 @@ class Article extends CI_Controller
         $param = $this->input->get();
         $data = [];
         if (!empty($param['searchValue'])) {
-            $data = $this->article_model->list($param);
+            $data['list'] = $this->article_model->list($param);
         }
         send_json(TRUE, $data);
     }

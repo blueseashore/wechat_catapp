@@ -3,7 +3,7 @@
  * @module getBulletType -
  * @module getMineList -
  * @module bingOSCUser -
- * @module getSourcePlatformName - 
+ * @module getSourcePlatformName -
  * @author uckendo <455019825@qq.com>
  */
 
@@ -34,8 +34,20 @@ const getMineList = (obj) => {
     });
 }
 
+const getResultList = (obj) => {
+    wxRequest({
+        url: urls.resultList+"?searchValue=猫",
+        success: (res) => {
+        obj.success(res)
+        },
+        error: function(res) { console.log(res); },
+        fail: function(res) { console.log(res); },
+        complete: function(res) {},
+    });
+}
 
 module.exports = {
     getTabList,
     getMineList,
+    getResultList,
 }

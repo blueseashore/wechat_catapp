@@ -12,6 +12,7 @@ const urls = {
     BulletType: HOST + '/Index/category', //获取动弹类型列
     blogDetail: HOST + '/Article/detail', //获取文章内容
     mineList: HOST + '/User/mineList', //我的列表
+    resultList: HOST + '/Article/search', //搜索结果
 };
 module.exports = {
     urls

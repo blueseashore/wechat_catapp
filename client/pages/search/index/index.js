@@ -9,10 +9,19 @@ import {
     getMineList
 } from '../../../utils/common.js';
 Page({
-  suo: function (e) {
+  data: {
+    searchValue: ''
+  },
+  //获取用户输入的内容
+  searcheValueInput: function (e) {
+    this.setData({
+      searchValue: e.detail.value
+    })
+  },
 
+  suo: function (e) {
     wx.navigateTo({
-      url: '../result/index?id=1',
+      url: '../result/result?searchValue=' + this.data.searchValue,
     })
   }
 })
