@@ -37,7 +37,7 @@ class Article_model extends CI_Model
             $this->db->where_in('term_taxonomy_id', array_flip($this->_category));
         }
         if (!empty($param['searchValue'])) {
-            $this->db->or_like('post_title', trim($param['searchValue']));
+            $this->db->like('post_title', trim($param['searchValue']));
             $this->db->or_like('post_content', trim($param['searchValue']));
         }
         $this->db->from($this->_table . ' p');
@@ -52,6 +52,7 @@ class Article_model extends CI_Model
         $this->db->group_by('object_id');
 
         $data = $this->db->get()->result_array();
+
         if (!empty($data)) {
             foreach ($data as &$item) {
                 $item['href'] = $item['id'];

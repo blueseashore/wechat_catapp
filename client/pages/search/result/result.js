@@ -18,60 +18,31 @@ import { Tab, extend } from '../../../style/zan-ui/index.js';
 
 Page(extend({}, Tab, {
   data: {
-    categoryTab: {
-      list: [],
-      selectedId: '',
-      selectedTabID: 0,
-      scroll: false,
-      height: 45,
-      scrolling: false,
-    },
+    articles: [],
+    selectedId: '',
+    selectedTabID: 0,
+    scroll: false,
+    height: 45,
+    scrolling: false,  
   },
-
   onLoad: function (options) {
     var that = this;
-    wx.getSystemInfo({
+    console.log(options);
+    console.log(options.searchValue);
+    wx.request({
+      url: "https://uckendo.com/Article/search?searchValue=" + options.searchValue,
+      method: 'GET',
+      header: {
+        //设置参数内容类型为x-www-form-urlencoded
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
       success: function (res) {
         that.setData({
-          clientHeight: res.windowHeight
-        });
+          articles: res.data
+        })
       }
-    });
-    console.warn(options);
-
-    getResultList({
-      success: (res) => {
-        console.warn(res);
-        this.setData({
-          [`categoryTab.scroll`]: res['scroll'],
-          [`categoryTab.list`]: res['list'],
-          [`categoryTab.selectedId`]: res['list'][res['selectedId']]['id'],
-          [`categoryTab.selectedTabID`]: res['selectedId']
-        });
-        if (options.hasOwnProperty('q')) { //扫码进入时访问
-          var path = decodeURIComponent(options.q);
-          var pathArray = path.split("/"); //各个参数放到数组里
-          console.warn(pathArray);
-          console.warn(pathArray[4]);
-          var tabList = this.data.categoryTab.list;
-          for (var i = 0; i < tabList.length; i++) {
-            if (tabList[i]['id'] == pathArray[4]) {
-              var selectedTabID = i;
-            }
-          }
-          this.setData({
-            [`categoryTab.selectedId`]: pathArray[4],
-            [`categoryTab.selectedTabID`]: selectedTabID,
-          });
-        } else {
-          // that.setData({
-          //     path: options.path,
-          // });
-        }
-        this.refresh({ singleTabRefresh: false });
-      }
-    });
-    var that = this;
+    })
   },
 
   refresh: function (obj) {
@@ -109,7 +80,7 @@ Page(extend({}, Tab, {
     }
   },
 
-  firstRequest: function (url, currentTabDataID) {
+  getResultList: function (url, currentTabDataID) {
     let that = this;
     wxRequest({
       url: urls.host + url,
