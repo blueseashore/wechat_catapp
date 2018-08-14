@@ -39,15 +39,11 @@ Page({
     wx.request({
       url: "https://uckendo.com/Article/search?searchValue=" + options.searchValue,
       method: 'GET',
-      header: {
-        //设置参数内容类型为x-www-form-urlencoded
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
       success: function (res) {
         that.setData({
           articles: res.data,
-          searchValue: options.searchValue
+          searchValue: options.searchValue,
+          nomore:false,
         })
       }
     })

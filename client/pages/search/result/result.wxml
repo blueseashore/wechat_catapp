@@ -4,6 +4,7 @@
 <scroll-view scroll-y="{{true}}" style="height: 800px" bindscrolltolower="getNextPage">          
     <block wx:for="{{ articles.data.list }}" wx:for-item="singleBlog" wx:key="title">
         <navigator url="/pages/index/detail/index?path={{ singleBlog.href }}&cover={{ singleBlog.thumbnail }}" hover-class="navigator-hover">
+            <block>
             <view class="zan-box">
                 <view class="zan-row">
                     <image style="width:100%" src='{{ singleBlog.thumbnail }}' lazy-load='true' mode='widthFix'></image>
@@ -23,8 +24,7 @@
                     </view>
                 </view>
             </view>
+            </block>
         </navigator>
     </block>
 </scroll-view>
-
-

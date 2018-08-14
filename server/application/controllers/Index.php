@@ -20,7 +20,7 @@ class Index extends CI_Controller
     {
         $response['scroll'] = false;
         $response['list'] = [
-            ['id' => 'cat-newest', 'title' => '首页', 'url' => '/article/list?cat=0', 'data' => []],
+            ['id' => 'cat-newest', 'title' => '最新', 'url' => '/article/list?cat=0', 'data' => []],
             ['id' => 'cat-new', 'title' => '新品', 'url' => '/article/list?cat=24', 'data' => []],
             ['id' => 'cat-breed', 'title' => '卡牌', 'url' => '/article/list?cat=25', 'data' => []],
             ['id' => 'cat-school', 'title' => '学堂', 'url' => '/article/list?cat=26', 'data' => []],
