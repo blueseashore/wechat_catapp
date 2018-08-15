@@ -136,7 +136,7 @@ Page({
                     });
                 } else {
                     wx.setNavigationBarTitle({
-                        title: "码云博客"
+                        title: "做我的喵星人"
                     })
                     that.setData({
                         forwardButton: false
