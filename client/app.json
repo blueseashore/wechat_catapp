@@ -37,7 +37,7 @@
             },
             {
                 "pagePath": "pages/mine/index/index",
-                "text": "关于",
+                "text": "联系",
                 "iconPath": "images/icons/mine-gray.png",
                 "selectedIconPath": "images/icons/mine-red.png"
             }
